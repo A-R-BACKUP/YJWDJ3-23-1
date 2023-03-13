@@ -1,0 +1,36 @@
+/* enum SEASONS{SPRING, SUMMER, AUTUMN, WINTER};
+// enum 열거형명{열거요소1, 열거요소2, 열거요소3, ... ,열거요소n };
+// SPRING:0,SUMMER:1,AUTUMN:2,WINTER:3
+alert(SEASONS.AUTUMN); */
+/* enum SEASONS{SPRING=10, SUMMER, AUTUMN, WINTER};
+
+alert(SEASONS.AUTUMN); */
+var SEASONS;
+(function (SEASONS) {
+    SEASONS[SEASONS["SPRING"] = 1] = "SPRING";
+    SEASONS[SEASONS["SUMMER"] = 2] = "SUMMER";
+    SEASONS[SEASONS["AUTUMN"] = 4] = "AUTUMN";
+    SEASONS[SEASONS["WINTER"] = 8] = "WINTER";
+})(SEASONS || (SEASONS = {}));
+; // （1）
+// 0b0001, 0b0010, 0b0100, 0b1000
+var season, season1;
+season = SEASONS.SPRING + SEASONS.SUMMER; // （2）
+// 0b0001+0b0010 = 0b0011(3)
+season1 = SEASONS.SUMMER | SEASONS.WINTER; // |, &, >>, << 비트연산자
+// 0b0010 | 0b1000 = 0b1010(10)
+season = season1;
+// （3）
+switch (season) {
+    case SEASONS.SPRING:
+        alert("春物です");
+        break;
+    case SEASONS.SPRING + SEASONS.SUMMER:
+        alert("春夏物です");
+        break;
+    case SEASONS.SUMMER | SEASONS.WINTER:
+        alert("여름겨울です");
+        break;
+    default:
+        alert("秋または冬にも使えます");
+}
